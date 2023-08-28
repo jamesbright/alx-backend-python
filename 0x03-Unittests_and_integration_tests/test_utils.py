@@ -4,7 +4,7 @@
 from unittest import TestCase, mock
 from unittest.mock import patch, Mock
 from parameterized import parameterized
-from utils import access_nested_map, get_json
+from utils import access_nested_map, get_json, memoize
 
 
 class TestAccessNestedMap(TestCase):
@@ -29,7 +29,7 @@ class TestAccessNestedMap(TestCase):
             access_nested_map(map, path)
             self.assertEqual(wrong_output, e.exception)
 
-    
+
 class TestGetJson(TestCase):
     """ Class for testing get_json function """
     # order of args: test_url, test_payload
@@ -48,7 +48,7 @@ class TestGetJson(TestCase):
             self.assertEqual(real_response, test_payload)
             # check that mocked method called once per input
             mock_response.json.assert_called_once()
-            
+
 
 class TestMemoize(TestCase):
     """ Class for testing memoization """
