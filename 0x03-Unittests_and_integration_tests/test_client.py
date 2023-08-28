@@ -27,7 +27,7 @@ class TestGithubOrgClient(unittest.TestCase):
         x = GithubOrgClient(org)
         self.assertEqual(x.org, expected)
         get_patch.assert_called_once_with("https://api.github.com/orgs/"+org)
-    
+
     def test_public_repos_url(self):
         """ test that _public_repos_url works """
         expected = "www.repo.com"
@@ -113,5 +113,3 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
         self.assertEqual(y.public_repos("apache-2.0"), self.apache2_repos)
         self.get.assert_has_calls([call("https://api.github.com/orgs/x"),
                                    call(self.org_payload["repos_url"])])
-
-
